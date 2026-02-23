@@ -12,47 +12,47 @@ MACRO tt_um_fabulous_ihp_26a
     USE GROUND ;
     PORT
       LAYER TopMetal1 ;
-        RECT 24.460 14.490 26.660 696.150 ;
+        RECT 24.460 0.000 26.660 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 100.060 14.900 102.260 696.150 ;
+        RECT 100.060 0.000 102.260 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 175.660 14.900 177.860 696.150 ;
+        RECT 175.660 0.000 177.860 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 251.260 14.900 253.460 696.150 ;
+        RECT 251.260 0.000 253.460 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 326.860 14.900 329.060 696.150 ;
+        RECT 326.860 0.000 329.060 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 402.460 14.900 404.660 696.150 ;
+        RECT 402.460 0.000 404.660 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 478.060 14.900 480.260 696.150 ;
+        RECT 478.060 0.000 480.260 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 553.660 14.900 555.860 696.150 ;
+        RECT 553.660 0.000 555.860 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 629.260 14.900 631.460 696.150 ;
+        RECT 629.260 0.000 631.460 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 704.860 14.900 707.060 696.150 ;
+        RECT 704.860 0.000 707.060 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 780.460 14.900 782.660 696.150 ;
+        RECT 780.460 0.000 782.660 710.640 ;
     END
   END VGND
   PIN VPWR
@@ -60,47 +60,47 @@ MACRO tt_um_fabulous_ihp_26a
     USE POWER ;
     PORT
       LAYER TopMetal1 ;
-        RECT 18.260 14.900 20.460 695.740 ;
+        RECT 18.260 0.000 20.460 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 93.860 14.900 96.060 695.740 ;
+        RECT 93.860 0.000 96.060 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 169.460 14.900 171.660 695.740 ;
+        RECT 169.460 0.000 171.660 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 245.060 14.900 247.260 695.740 ;
+        RECT 245.060 0.000 247.260 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 320.660 14.900 322.860 695.740 ;
+        RECT 320.660 0.000 322.860 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 396.260 14.900 398.460 695.740 ;
+        RECT 396.260 0.000 398.460 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 471.860 14.900 474.060 695.740 ;
+        RECT 471.860 0.000 474.060 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 547.460 14.900 549.660 695.740 ;
+        RECT 547.460 0.000 549.660 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 623.060 14.900 625.260 695.740 ;
+        RECT 623.060 0.000 625.260 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 698.660 14.900 700.860 695.740 ;
+        RECT 698.660 0.000 700.860 710.640 ;
     END
     PORT
       LAYER TopMetal1 ;
-        RECT 774.260 14.900 776.460 695.740 ;
+        RECT 774.260 0.000 776.460 710.640 ;
     END
   END VPWR
   PIN clk
@@ -219,7 +219,6 @@ MACRO tt_um_fabulous_ihp_26a
     DIRECTION INPUT ;
     USE SIGNAL ;
     ANTENNAGATEAREA 0.335400 ;
-    ANTENNADIFFAREA 2.015400 ;
     PORT
       LAYER Metal4 ;
         RECT 140.970 709.640 141.270 710.640 ;
@@ -494,11 +493,11 @@ MACRO tt_um_fabulous_ihp_26a
       LAYER Metal1 ;
         RECT 5.760 14.900 848.640 695.740 ;
       LAYER Metal2 ;
-        RECT 0.855 12.875 842.985 709.105 ;
+        RECT 3.255 12.875 842.985 709.525 ;
       LAYER Metal3 ;
-        RECT 0.815 12.920 843.025 709.485 ;
+        RECT 3.215 12.920 843.025 709.485 ;
       LAYER Metal4 ;
-        RECT 5.175 709.430 29.400 709.640 ;
+        RECT 3.260 709.430 29.400 709.640 ;
         RECT 30.120 709.430 33.240 709.640 ;
         RECT 33.960 709.430 37.080 709.640 ;
         RECT 37.800 709.430 40.920 709.640 ;
@@ -542,13 +541,13 @@ MACRO tt_um_fabulous_ihp_26a
         RECT 183.720 709.430 186.840 709.640 ;
         RECT 187.560 709.430 190.680 709.640 ;
         RECT 191.400 709.430 842.500 709.640 ;
-        RECT 5.175 13.295 842.500 709.430 ;
+        RECT 3.260 13.295 842.500 709.430 ;
       LAYER Metal5 ;
-        RECT 5.135 13.760 841.800 695.830 ;
+        RECT 1.330 13.760 841.800 695.830 ;
       LAYER TopMetal1 ;
-        RECT 5.380 57.140 16.620 677.860 ;
-        RECT 22.100 57.140 22.820 677.860 ;
-        RECT 28.300 57.140 84.540 677.860 ;
+        RECT 0.820 15.140 16.620 682.060 ;
+        RECT 22.100 15.140 22.820 682.060 ;
+        RECT 28.300 15.140 50.340 682.060 ;
   END
 END tt_um_fabulous_ihp_26a
 END LIBRARY
