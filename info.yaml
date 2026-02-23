@@ -24,7 +24,7 @@ project:
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
   # Inputs
-  ui[0]: ""
+  ui[0]: "TBD"
   ui[1]: ""
   ui[2]: ""
   ui[3]: ""
@@ -34,7 +34,7 @@ pinout:
   ui[7]: ""
 
   # Outputs
-  uo[0]: ""
+  uo[0]: "TBD"
   uo[1]: ""
   uo[2]: ""
   uo[3]: ""
@@ -44,7 +44,7 @@ pinout:
   uo[7]: ""
 
   # Bidirectional pins
-  uio[0]: ""
+  uio[0]: "TBD"
   uio[1]: ""
   uio[2]: ""
   uio[3]: ""
@@ -52,14 +52,6 @@ pinout:
   uio[5]: ""
   uio[6]: ""
   uio[7]: ""
-
-  # Analog pins - make sure to also set "analog_pins" above, else the pins won't be connected
-  ua[0]: ""
-  ua[1]: ""
-  ua[2]: ""
-  ua[3]: ""
-  ua[4]: ""
-  ua[5]: ""
 
 # Do not change!
 yaml_version: 6
