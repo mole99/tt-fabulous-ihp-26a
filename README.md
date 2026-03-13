@@ -48,7 +48,17 @@ Please see the README in `user_designs/` on how to implement a user design for t
 After you have generated the bitstreams for the user designs you can simulate the fabric.
 You will again need the Nix shell from the root of this repository.
 
+```
+nix-shell
+```
+
 Again, use `FABRIC` and `TILE_LIBRARY` to select both accordingly.
+
+If you've changed the fabric, make sure to run:
+
+```
+copy-fabric
+```
 
 There are two ways to simulate the fabric:
 
@@ -58,10 +68,10 @@ In this case, "emulation" means that we simulate the fabric, however, without up
 The configuration bits of the fabric are already initialized with the user design bitstream.
 This has the benefit that simulation is much faster: no need to upload the bitstream and the Verilog simulator can prune dead branches. However, the disadvantage is that only a single user design can be run per simulation.
 
-To emulate a user design, simply set EMULATE to its name:
+To emulate a user design, simply set EMULATION to its name:
 
 ```
-export EMULATE=counter
+export EMULATION=counter
 ```
 
 Then, run the simulation using cocotb:
@@ -82,7 +92,7 @@ And it will run all available test cases for the selected fabric and tile librar
 
 ## Build Tiny FABulous FPGA
 
-Enable a Nix shell with LibreLane dev:
+Enable a Nix shell:
 
 ```
 nix-shell
@@ -91,15 +101,57 @@ nix-shell
 Implement the design:
 
 ```
-librelane config.yaml --pdk ihp-sg13g2 --save-views-to macro/
+make tt-fabulous
 ```
 
-Open in OpenROAD:
+Open the design in OpenROAD:
 
 ```
-librelane config.yaml --pdk ihp-sg13g2 --last-run --flow OpenInOpenROAD
+tt-fabulous-openroad
+```
+
+Open the design in KLayout:
+
+```
+tt-fabulous-klayout
+```
+
+After implementing the fabric, copy the files for submission:
+
+```
+copy-tt
 ```
 
 ## Simulate Tiny FABulous FPGA
 
-TODO GL of config logic
+#### RTL "Emulation"
+
+```
+export EMULATION=top_counter
+```
+
+Then, run the simulation using cocotb:
+
+```
+cd tb; python3 top_tb.py
+```
+
+#### RTL Simulation
+
+To start the RTL simulation, simply run cocotb:
+
+```
+cd tb; python3 top_tb.py
+```
+
+And it will run all available test cases for the selected fabric and tile library.
+
+#### RTL/GL Simulation
+
+To start the RTL simulation, simply run cocotb:
+
+```
+cd tb; GL=1 python3 top_tb.py
+```
+
+And it will run all available test cases for the selected fabric and tile library.

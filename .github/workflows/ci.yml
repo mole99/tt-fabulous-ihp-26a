@@ -117,7 +117,7 @@ jobs:
           make copy-tt
       - name: Simulate the FPGA RTL (Emulation)
         run: |
-          EMULATION=counter_top PDK=${{ matrix.pdk }} TILE_LIBRARY=${{ env.TILE_LIBRARY }} FABRIC=${{ matrix.fabrics }} nix develop --command bash -c "cd tb; python3 top_tb.py"
+          EMULATION=top_counter PDK=${{ matrix.pdk }} TILE_LIBRARY=${{ env.TILE_LIBRARY }} FABRIC=${{ matrix.fabrics }} nix develop --command bash -c "cd tb; python3 top_tb.py"
       - name: Simulate the FPGA RTL (Simulation)
         run: |
           PDK=${{ matrix.pdk }} TILE_LIBRARY=${{ env.TILE_LIBRARY }} FABRIC=${{ matrix.fabrics }} nix develop --command bash -c "cd tb; python3 top_tb.py"
