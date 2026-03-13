@@ -94,6 +94,7 @@ jobs:
       - name: Stitch the tiles
         run: |
           PDK=${{ matrix.pdk }} nix develop --command make ${{ matrix.fabrics }}
+          make copy-fabric
       - name: Upload Macro Folder
         if: success() || failure()
         uses: actions/upload-artifact@v4
@@ -110,4 +111,16 @@ jobs:
       - name: Simulate the Fabric (Simulation)
         run: |
           PDK=${{ matrix.pdk }} TILE_LIBRARY=${{ env.TILE_LIBRARY }} FABRIC=${{ matrix.fabrics }} nix develop --command bash -c "cd tb; python3 top_tb.py"
-      # TODO build the TT macro, simulate the top-level
+      - name: Build TT FPGA
+        run: |
+          nix develop --command make tt-fabulous
+          make copy-tt
+      - name: Simulate the FPGA RTL (Emulation)
+        run: |
+          EMULATION=counter_top PDK=${{ matrix.pdk }} TILE_LIBRARY=${{ env.TILE_LIBRARY }} FABRIC=${{ matrix.fabrics }} nix develop --command bash -c "cd tb; python3 top_tb.py"
+      - name: Simulate the FPGA RTL (Simulation)
+        run: |
+          PDK=${{ matrix.pdk }} TILE_LIBRARY=${{ env.TILE_LIBRARY }} FABRIC=${{ matrix.fabrics }} nix develop --command bash -c "cd tb; python3 top_tb.py"
+      - name: Simulate the FPGA RTL/GL (Simulation)
+        run: |
+          GL=1 PDK=${{ matrix.pdk }} TILE_LIBRARY=${{ env.TILE_LIBRARY }} FABRIC=${{ matrix.fabrics }} nix develop --command bash -c "cd tb; python3 top_tb.py"

@@ -19,12 +19,12 @@ FP_DEF_TEMPLATE: dir::src/tt_block_4x4_pgvdd.def
 PDN_CFG: dir::src/pdn_cfg.tcl
 PDN_EXTEND_TO: "boundary"
 
-PL_TARGET_DENSITY_PCT: 40
+PL_TARGET_DENSITY_PCT: 35
 GRT_ALLOW_CONGESTION: true
 
-# TODO clock gating?
-SYNTH_CLOCKGATE_POSEDGE_ICG: "sg13g2_lgcp_1/GATE/CLK/GCLK"
-SYNTH_CLOCKGATE_MIN_WIDTH: 4
+# TODO enable clock gating?
+#SYNTH_CLOCKGATE_POSEDGE_ICG: "sg13g2_lgcp_1/GATE/CLK/GCLK"
+#SYNTH_CLOCKGATE_MIN_WIDTH: 4
 
 RT_MAX_LAYER: TopMetal1
 FP_PDN_MULTILAYER: False
@@ -34,6 +34,10 @@ FP_PDN_MULTILAYER: False
 # Standard cell row height: 3.78 (9 Metal3 tracks)
 FP_MACRO_HORIZONTAL_HALO: expr::(0.48 * 8)
 FP_MACRO_VERTICAL_HALO: expr::(0.42 * 9)
+
+# Save some more core area
+BOTTOM_MARGIN_MULT: 2
+TOP_MARGIN_MULT: 2
 
 MACROS:
   eFPGA:
@@ -45,7 +49,7 @@ MACROS:
       - dir::fabrics/tiny_fabric_5x5/macro/ihp-sg13g2/nl/eFPGA.nl.v
     instances:
       eFPGA:
-        location: [expr::(0.48 * 100), expr::(0.42 * 27)]
+        location: [expr::(0.48 * 100), expr::(0.42 * 9)] # expr::(0.42 * 27)
         orientation: FS
 
 
