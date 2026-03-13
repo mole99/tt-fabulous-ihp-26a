@@ -148,6 +148,12 @@ And it will run all available test cases for the selected fabric and tile librar
 
 #### RTL/GL Simulation
 
+Before running the RTLG/GL simulation, enable a PDK version using ciel:
+
+```
+ciel enable --pdk-family ihp-sg13g2 d335549443691aa7b6095c4186961c5806e0bcff
+```
+
 To start the RTL simulation, simply run cocotb:
 
 ```
