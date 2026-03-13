@@ -101,10 +101,16 @@ if __name__ == "__main__":
     sim = os.getenv("SIM", "icarus")
     pdk_root = os.getenv("PDK_ROOT", Path("~/.ciel").expanduser())
     pdk = os.getenv("PDK", "ihp-sg13g2")
-    scl = os.getenv("SCL", "gf180mcu_fd_sc_mcu7t5v0")
+    scl = os.getenv("SCL", "sg13g2_stdcell")
     gl = os.getenv("GL", None)
     emulation = os.getenv("EMULATION", False)
     tile_library = os.getenv("TILE_LIBRARY", "tiny")
+    
+    if emulation and gl:
+        print("Error: EMULATION and GL can't be set at the same time.")
+        sys.exit(1)
+    
+    hdl_toplevel = "tt_um_fabulous_ihp_26a"
     
     tiles_path = Path(proj_path / ".." / "ip" / "fabulous-tiles")
     primitives_path = Path(tiles_path) / "primitives"
@@ -120,16 +126,29 @@ if __name__ == "__main__":
     defines = {}
     test_filter = None
     
-    sources.append(proj_path / f"../src/tt_um_fabulous_ihp_26a.sv")
-    sources.append(proj_path / f"../ip/fabric_bitbang/fabric_bitbang.sv")
-    
-    if emulation:
-        sources.append(proj_path / f'../user_designs/designs/{tile_library}/{emulation}/{emulation}.vh')
-        defines = {"EMULATION": True}
-        test_filter = "test_" + emulation
-    
     sources.extend(primitives_files)
     sources.extend(tile_files)
+    
+    # gate-level
+    if gl:
+        # SCL models
+        sources.append(Path(pdk_root) / pdk / "libs.ref" / scl / "verilog" / f"{scl}.v")
+        sources.append(Path(pdk_root) / pdk / "libs.ref" / scl / "verilog" / f"sg13g2_udp.v")
+
+        # We use the unpowered netlist
+        sources.append(proj_path / f"../macro/nl/{hdl_toplevel}.nl.v")
+
+        defines["USE_POWER_PINS"] = False
+    # RTL
+    else:
+        sources.append(proj_path / f"../src/tt_um_fabulous_ihp_26a.sv")
+        sources.append(proj_path / f"../ip/fabric_config/fabric_config.sv")
+        sources.append(proj_path / f"../ip/fabric_bitbang/fabric_bitbang.sv")
+    
+        if emulation:
+            sources.append(proj_path / f'../user_designs/designs/{tile_library}/{emulation}/{emulation}.vh')
+            defines["EMULATION"] = True
+            test_filter = "test_" + emulation
     
     # Add models pack
     sources.append(tiles_path / "models_pack.v")
@@ -139,14 +158,6 @@ if __name__ == "__main__":
 
     # Add fabric netlist
     sources.append(proj_path / f'../fabrics/{fabric}/macro/{pdk}/fabulous/eFPGA.v')
-    
-    # Add fabric config
-    sources.append(proj_path / '../ip/fabric_config/fabric_config.sv')
-
-    # Add fabric config
-    sources.append(proj_path / '../ip/fabric_spi/fabric_spi_receiver.sv')
-
-    hdl_toplevel = "tt_um_fabulous_ihp_26a"
 
     runner = get_runner(sim)
     runner.build(

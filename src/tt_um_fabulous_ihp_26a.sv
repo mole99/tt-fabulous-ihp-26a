@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2026 FABulous Contributors
+// SPDX-FileCopyrightText: © 2026 Leo Moser <leo.moser@pm.me>
 // SPDX-License-Identifier: Apache-2.0
 
 module tt_um_fabulous_ihp_26a (

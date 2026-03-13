@@ -24,8 +24,7 @@ For information on installing Nix with the FOSSi Foundation cache, please refer 
 ## Stitch the Fabric
 
 Before proceeding, ensure that the tiles for the tile library that you are using have been implemented in `ip/fabulous-tiles`.
-
-If so, you can proceed by enabling a Nix shell with LibreLane in this repository:
+If that is the case, you can proceed by enabling a Nix shell with LibreLane in this repository:
 
 ```
 nix-shell
@@ -44,12 +43,49 @@ For example, to view `tiny_fabric_5x5` in OpenROAD, run: `make tiny_fabric_5x5-o
 
 Please see the README in `user_designs/` on how to implement a user design for the fabric.
 
+## Simulate the Fabric
+
+After you have generated the bitstreams for the user designs you can simulate the fabric.
+You will again need the Nix shell from the root of this repository.
+
+Again, use `FABRIC` and `TILE_LIBRARY` to select both accordingly.
+
+There are two ways to simulate the fabric:
+
+#### RTL "Emulation"
+
+In this case, "emulation" means that we simulate the fabric, however, without uploading the bitstream.
+The configuration bits of the fabric are already initialized with the user design bitstream.
+This has the benefit that simulation is much faster: no need to upload the bitstream and the Verilog simulator can prune dead branches. However, the disadvantage is that only a single user design can be run per simulation.
+
+To emulate a user design, simply set EMULATE to its name:
+
+```
+export EMULATE=counter
+```
+
+Then, run the simulation using cocotb:
+
+```
+cd tb; python3 fabric_tb.py
+```
+
+#### RTL Simulation
+
+To start the RTL simulation, simply run cocotb:
+
+```
+cd tb; python3 fabric_tb.py
+```
+
+And it will run all available test cases for the selected fabric and tile library.
+
 ## Build Tiny FABulous FPGA
 
 Enable a Nix shell with LibreLane dev:
 
 ```
-nix shell github:librelane/librelane/dev
+nix-shell
 ```
 
 Implement the design:
@@ -63,3 +99,7 @@ Open in OpenROAD:
 ```
 librelane config.yaml --pdk ihp-sg13g2 --last-run --flow OpenInOpenROAD
 ```
+
+## Simulate Tiny FABulous FPGA
+
+TODO GL of config logic

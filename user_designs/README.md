@@ -1,8 +1,10 @@
 # User Designs
 
-Currently, forks of Yosys and nextpnr are required in order to implement the user designs. The changes to these forks are being upstreamed.
+User designs are Verilog designs that run on the FPGA fabric.
 
 ## Requirements
+
+Currently, forks of Yosys and nextpnr are required in order to implement the user designs. The changes to these forks are being upstreamed.
 
 Enable a Nix shell with the forks of Yosys and nextpnr:
 
@@ -10,7 +12,7 @@ Enable a Nix shell with the forks of Yosys and nextpnr:
 nix-shell
 ```
 
-**Note:** To generate the bitstreams you need to `pip3 install fasm`. (Still to be added to the Nix shell.)
+**Note:** To generate the bitstreams you need to `pip3 install fasm`.
 
 ## Implement the Designs
 
@@ -46,3 +48,10 @@ Commands:
  clean           ... Delete all generated files
  help            ... Show this help message
 ```
+
+## Hints
+
+- You can use the `BEL` attribute to constrain the position of Bels. You can constrain IOs, LCs, GBUFs etc. this way.
+  For example: `(* keep, BEL="X0Y4.A" *)`
+- `FABULOUS_LC` has a synchronous, active-high reset. For best utilization, make sure to use a GBUF for rst_n and set `INVERT=1` to get rst for your design.
+- Fast carry chains can be as high as 8*3-1 = 23 bit addition

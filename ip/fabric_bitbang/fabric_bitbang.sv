@@ -4,12 +4,9 @@
 `default_nettype none
 
 /*
-This SPI controller reads a bitstream from an
-SPI Flash upon receiving a start_i pulse.
-The starting address can be changed using the
-slot_i input.
-Use the parameters to adjust for the correct
-bitstream length of your fabric.
+Sample data from data_i whenever there's
+a rising edge on sample_i. Once 32 bits
+have been acquired, output the frame.
 */
 
 module fabric_bitbang #(
@@ -48,8 +45,8 @@ module fabric_bitbang #(
             bitstream_valid_o <= '0;
             if (do_sample) begin
                 bit_counter <= bit_counter + 1;
-                bitstream_data <= {bitstream_data[FRAME_BITS_PER_ROW-2:0], data_i}; // TODO check MSB/LSB first
-                bitstream_valid_o <= bit_counter == FRAME_BITS_PER_ROW-1; // TODO
+                bitstream_data <= {bitstream_data[FRAME_BITS_PER_ROW-2:0], data_i};
+                bitstream_valid_o <= bit_counter == FRAME_BITS_PER_ROW-1;
             end
         end
     end

@@ -1,8 +1,8 @@
 # Paths
 PDK 			?= ihp-sg13g2
-FABRIC 			?= classic_fabric_10x10
-TILE_LIBRARY		?= classic
-FABULOUS_ROOT 		?= $(abspath ../../../../fabrics/$(FABRIC)/macro/$(PDK)/fabulous)
+FABRIC 			?= tiny_fabric_5x5
+TILE_LIBRARY		?= tiny
+FABULOUS_ROOT 		?= $(abspath ../../../fabrics/$(FABRIC)/macro/$(PDK)/fabulous)
 PCF_CONSTRAINTS 		?= $(abspath $(FABULOUS_ROOT)/../../../constraints.pcf)
 TOP 			?= top_wrapper
 
