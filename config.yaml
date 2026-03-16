@@ -40,18 +40,18 @@ BOTTOM_MARGIN_MULT: 2
 TOP_MARGIN_MULT: 2
 
 MACROS:
-  eFPGA:
+  tiny_fabric_5x5:
     gds:
-      - dir::fabrics/tiny_fabric_5x5/macro/ihp-sg13g2/gds/eFPGA.gds
+      - dir::fabrics/tiny_fabric_5x5/macro/ihp-sg13g2/gds/tiny_fabric_5x5.gds
     lef:
-      - dir::fabrics/tiny_fabric_5x5/macro/ihp-sg13g2/lef/eFPGA.lef
+      - dir::fabrics/tiny_fabric_5x5/macro/ihp-sg13g2/lef/tiny_fabric_5x5.lef
     nl:
-      - dir::fabrics/tiny_fabric_5x5/macro/ihp-sg13g2/nl/eFPGA.nl.v
+      - dir::fabrics/tiny_fabric_5x5/macro/ihp-sg13g2/nl/tiny_fabric_5x5.nl.v
     instances:
-      eFPGA:
+      tiny_fabric_5x5:
         location: [expr::(0.48 * 100), expr::(0.42 * 9)] # expr::(0.42 * 27)
         orientation: FS
 
 
 PDN_MACRO_CONNECTIONS:
-- "eFPGA VPWR VGND VPWR VGND"
+- "tiny_fabric_5x5 VPWR VGND VPWR VGND"

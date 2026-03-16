@@ -158,7 +158,7 @@ if __name__ == "__main__":
     sources.append(tiles_path / "custom.v")
 
     # Add fabric netlist
-    sources.append(proj_path / f'../fabrics/{fabric}/macro/{pdk}/fabulous/eFPGA.v')
+    sources.append(proj_path / f'../fabrics/{fabric}/macro/{pdk}/fabulous/{fabric}.v')
 
     runner = get_runner(sim)
     runner.build(
