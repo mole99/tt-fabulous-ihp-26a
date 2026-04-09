@@ -40,12 +40,12 @@
           ))
           (final: prev: {
             nextpnr = prev.nextpnr.overrideAttrs {
-              version = "f00c382a";
+              version = "ca74f47c";
               src = prev.fetchFromGitHub {
-                owner = "mole99";
+                owner = "YosysHQ";
                 repo = "nextpnr";
-                rev = "f00c382ad918303d2c635b452fb948e3b1d244c4";
-                hash = "sha256-DiOgfEDLRNRBcdya0enT+uv1MH1O8CgBi5lS/Vjm2Ho=";
+                rev = "ca74f47c3f0f0d3f22b7a7e9920dafa589cc2f3e";
+                hash = "sha256-ybZiFL/c4W6OtXnAQhRbNtOQAHUJ+u3xcZYBmYYeWjA=";
                 fetchSubmodules = true;
               };
               cmakeFlags = [
