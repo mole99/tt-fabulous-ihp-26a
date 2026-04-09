@@ -5,6 +5,7 @@ TILE_LIBRARY		?= tiny
 FABULOUS_ROOT 		?= $(abspath ../../../fabrics/$(FABRIC)/macro/$(PDK)/fabulous)
 PCF_CONSTRAINTS 		?= $(abspath $(FABULOUS_ROOT)/../../../constraints.pcf)
 TOP 			?= top_wrapper
+#CORNER			?= nom_typ_1p20V_25C
 
 # Available flip-flops and init value
 FFS                     ?= -ff "\$$_DFF_P_" x \
@@ -81,10 +82,11 @@ pnr:
 	--json $(TOP).json \
 	--write $(TOP)_out.json \
 	-o fasm=$(TOP).fasm \
+	-o corner=$(CORNER) \
+	-o pcf=$(PCF_CONSTRAINTS) \
 	--verbose \
 	--log $(TOP)_log.txt \
-	--timing-allow-fail \
-	-o pcf=$(PCF_CONSTRAINTS)
+	--timing-allow-fail
 .PHONY: pnr
 
 bitstream:
